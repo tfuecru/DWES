@@ -22,5 +22,31 @@
                 </li>
             </ul>
         </form>
+
+        <?= $folderText ?>
+        
+        <ul>
+            <?php
+            foreach ($files as $file) {
+                $filePath = $dirPath . '/' . $file;
+                if (is_file($filePath)) {
+                    ?>
+                    <li> 
+                        file <?= substr($file, 15) ?> 
+                        <a href='view.php?folder=" . $folder . "&file=" . $file . "' target='viewnormal'>View</a>
+                    </li>
+                    <?php
+                }else if(substr($file, 0, 1) != '.') {
+                    ?>
+                    <li>
+                        folder <?= $file ?> 
+                        <a href="?folder=<?= $file?>">View content</a>
+                    </li>
+                    <?php
+                }
+            }
+            ?>
+        </ul>
+
 </body>
 </html>

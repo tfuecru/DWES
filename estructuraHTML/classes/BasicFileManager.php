@@ -51,7 +51,7 @@ class BasicFileManager{
     function upload(string $name, string $target) {
         if(isset($_FILES[$name]) &&
             $_FILES[$name]['error'] == 0 &&
-            str_contains(mime_content_type($_FILES[$name]['tmp_name']), 'textplain')) {
+            str_contains(mime_content_type($_FILES[$name]['tmp_name']), 'text/plain')) {
                 $fileName = $this->prefix() . '_' . $_FILES[$name]['name'];
                 return move_uploaded_file($_FILES[$name]['tmp_name'], $target . '/' . $fileName);
         }
